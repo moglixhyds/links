@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tracker Dashboard</title>
+<title>Dashboard</title>
 
 <style>
-/* Reset */
 * {
     margin: 0;
     padding: 0;
@@ -14,16 +13,15 @@
     font-family: "Segoe UI", sans-serif;
 }
 
-/* Background */
 body {
     height: 100vh;
     background: url('https://images.unsplash.com/photo-1503264116251-35a269479413') no-repeat center center/cover;
     display: flex;
     justify-content: center;
     align-items: center;
+    user-select: none;
 }
 
-/* Glass Container */
 .container {
     width: 90%;
     max-width: 900px;
@@ -35,14 +33,18 @@ body {
     text-align: center;
 }
 
-/* Title */
-h1 {
-    color: white;
-    margin-bottom: 25px;
-    letter-spacing: 1px;
+/* LOGO STYLE */
+.logo {
+    width: 180px;
+    margin-bottom: 20px;
+    transition: 0.4s;
 }
 
-/* Card */
+.logo:hover {
+    transform: scale(1.08);
+}
+
+/* CARD */
 .card {
     margin: 15px 0;
     padding: 20px;
@@ -54,13 +56,11 @@ h1 {
     align-items: center;
 }
 
-/* Text */
 .card h2 {
     color: white;
     font-size: 18px;
 }
 
-/* Button */
 .btn {
     padding: 10px 20px;
     border-radius: 25px;
@@ -72,22 +72,14 @@ h1 {
     transition: 0.3s;
 }
 
-/* Button Hover */
 .btn:hover {
     transform: scale(1.05);
     box-shadow: 0 0 15px rgba(0,255,255,0.6);
 }
 
-/* Disable text selection */
-body {
-    user-select: none;
-}
-
-/* Disable drag */
 img {
     pointer-events: none;
 }
-
 </style>
 
 </head>
@@ -95,33 +87,34 @@ img {
 <body oncontextmenu="return false;">
 
 <div class="container">
-    <h1>Meesho Tracker Dashboard</h1>
+
+    <!-- LOGO INSTEAD OF TITLE -->
+    <img src="logo.png" alt="Company Logo" class="logo">
 
     <div class="card">
-        <h2>Hyderabad(HYDS) Moglix Operations 2026 - Visit</h2>
+        <h2>Hyderabad(HYDS) Moglix Operations 2026</h2>
         <button class="btn" onclick="openLink('https://docs.google.com/spreadsheets/d/1EXdibIOuv_evcnTuDeJlLbnLoYR23MwMuyZ7rD_9_Aw/edit?usp=sharing')">Visit</button>
     </div>
 
     <div class="card">
-        <h2>HYDS INBOND & OUTBOND March-26 - Visit</h2>
-        <button class="btn" onclick="openLink('https://moglix-my.sharepoint.com/:x:/r/personal/murali_mala_moglix_com/Documents/HYDS%20INBOND%20%26%20OUTBOND%20March-26.xlsx?d=weef63c66b567402792f1bd625480ef2e&csf=1&web=1&e=XIFJIa')">Visit</button>
+        <h2>HYDS INBOND & OUTBOND March-26</h2>
+        <button class="btn" onclick="openLink('https://moglix-my.sharepoint.com/:x:/r/personal/murali_mala_moglix_com/Documents/HYDS%20INBOND%20%26%20OUTBOND%20March-26.xlsx')">Visit</button>
     </div>
 
     <div class="card">
-        <h2>IRT April 2026 - Visit</h2>
-        <button class="btn" onclick="openLink('https://moglix-my.sharepoint.com/:x:/r/personal/murali_mala_moglix_com/_layouts/15/Doc.aspx?sourcedoc=%7B37A1732A-C44E-458A-AC59-D43AA529DEEF%7D&file=IRT%20April-2026.xlsx&action=default&mobileredirect=true')">Visit</button>
+        <h2>IRT April 2026</h2>
+        <button class="btn" onclick="openLink('https://moglix-my.sharepoint.com')">Visit</button>
     </div>
 
     <div class="card">
-        <h2>HYDS standard form - Visit</h2>
-        <button class="btn" onclick="openLink('https://docs.google.com/spreadsheets/d/1-vJDPPBjiiChAK-sWkhBJjUjlk1dr-nIXpJeXh8mOVo/edit?gid=917771070#gid=917771070')">Visit</button>
+        <h2>HYDS Standard Form</h2>
+        <button class="btn" onclick="openLink('https://docs.google.com')">Visit</button>
     </div>
-    
+
     <div class="card">
-        <h2>Log10 Valmo - Visit</h2>
+        <h2>Log10 Valmo</h2>
         <button class="btn" onclick="openLink('https://console.valmo.in/operations/login')">Visit</button>
     </div>
-
 
 </div>
 
@@ -130,9 +123,8 @@ function openLink(url) {
     window.open(url, "_blank");
 }
 
-/* Disable keyboard shortcuts */
 document.addEventListener("keydown", function(e) {
-    if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
+    if (e.ctrlKey && (e.key === 'c' ⠟⠞⠺⠺⠟⠵⠞⠺⠞⠟⠺⠟⠺⠵⠺ e.key === 's')) {
         e.preventDefault();
     }
 });
