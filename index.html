@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracker Dashboard</title>
+
+<style>
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Background */
+body {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1503264116251-35a269479413') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Glass Container */
+.container {
+    width: 90%;
+    max-width: 900px;
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+/* Title */
+h1 {
+    color: white;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+/* Card */
+.card {
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Text */
+.card h2 {
+    color: white;
+    font-size: 18px;
+}
+
+/* Button */
+.btn {
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    transition: 0.3s;
+}
+
+/* Button Hover */
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0,255,255,0.6);
+}
+
+/* Disable text selection */
+body {
+    user-select: none;
+}
+
+/* Disable drag */
+img {
+    pointer-events: none;
+}
+
+</style>
+
+</head>
+
+<body oncontextmenu="return false;">
+
+<div class="container">
+    <h1>📊 Meesho Tracker Dashboard</h1>
+
+    <div class="card">
+        <h2>Tracker 1 - Visit</h2>
+        <button class="btn" onclick="openLink('https://your-link-1.com')">Visit</button>
+    </div>
+
+    <div class="card">
+        <h2>Tracker 2 - Visit</h2>
+        <button class="btn" onclick="openLink('https://your-link-2.com')">Visit</button>
+    </div>
+
+</div>
+
+<script>
+function openLink(url) {
+    window.open(url, "_blank");
+}
+
+/* Disable keyboard shortcuts */
+document.addEventListener("keydown", function(e) {
+    if (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) {
+        e.preventDefault();
+    }
+});
+</script>
+
+</body>
+</html>
