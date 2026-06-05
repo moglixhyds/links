@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tracker Dashboard</title>
+
+<style>
+
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+/* Body */
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    user-select:none;
+    background:black;
+}
+
+/* Background Video */
+#bg-video{
+    position:fixed;
+    right:0;
+    bottom:0;
+    min-width:100%;
+    min-height:100%;
+    object-fit:cover;
+    z-index:-3;
+}
+
+/* Dark Overlay */
+.overlay{
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.35);
+    z-index:-2;
+}
+
+/* Glass Container */
+.container{
+    width:90%;
+    max-width:900px;
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.08);
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+    text-align:center;
+    overflow-y:auto;
+    max-height:90vh;
+}
+
+/* Title */
+h1{
+    color:#ff3c3c;
+    margin-bottom:25px;
+    letter-spacing:1px;
+    text-shadow:0 0 10px rgba(255,0,0,0.6);
+}
+
+/* Card */
+.card{
+    margin:15px 0;
+    padding:20px;
+    border-radius:15px;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.12);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 0 25px rgba(0,255,255,0.25);
+}
+
+/* Text */
+.card h2{
+    color:white;
+    font-size:18px;
+}
+
+/* Button */
+.btn{
+    padding:10px 22px;
+    border-radius:25px;
+    border:none;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+    background:linear-gradient(45deg,#4facfe,#00f2fe);
+    transition:0.3s;
+}
+
+/* Button Hover */
+.btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 20px rgba(0,255,255,0.8);
+}
+
+/* Disable drag */
+img{
+    pointer-events:none;
+}
+
+/* Mobile Responsive */
+@media(max-width:768px){
+
+    .container{
+        width:95%;
+        padding:20px;
+    }
+
+    .card{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .card h2{
+        font-size:16px;
+        text-align:center;
+    }
+
+    .datetime-box{
+        left:10px !important;
+        top:10px !important;
+        transform:none !important;
+        width:180px;
+    }
+
+}
+
+/* Left Side Digital Clock */
+.datetime-box{
+    position:fixed;
+    left:20px;
+    top:50%;
+    transform:translateY(-50%);
+    width:220px;
+    padding:15px;
+    border-radius:16px;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(10px);
+    color:#00ffcc;
+    box-shadow:0 0 20px rgba(0,255,255,0.3);
+    z-index:9999;
+    text-align:center;
+    border:1px solid rgba(255,255,255,0.1);
+}
+
+#digital-clock{
+    font-size:28px;
+    font-weight:bold;
+    letter-spacing:2px;
+}
+
+#digital-date{
+    margin-top:10px;
+    font-size:15px;
+    color:white;
+    line-height:1.5;
+}
+
+/* Mouse Sprinkle Effect */
+.sparkle{
+    position:fixed;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    pointer-events:none;
+    animation:sparkleAnim 0.8s linear forwards;
+    z-index:99999;
+    mix-blend-mode:screen;
+}
+
+@keyframes sparkleAnim{
+    0%{
+        transform:scale(1) translateY(0);
+        opacity:1;
+    }
+    100%{
+        transform:scale(0) translateY(-25px);
+        opacity:0;
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00e5ff;
+    border-radius:10px;
+}
+
+</style>
+</head>
+
+<body oncontextmenu="return false;">
+
+<!-- Background Video -->
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="background.mp4" type="video/mp4">
+</video>
+
+<!-- Overlay -->
+<div class="overlay"></div>
+
+<!-- Clock -->
+<div class="datetime-box">
+    <div id="digital-clock">00:00:00</div>
+    <div id="digital-date">Loading date...</div>
+</div>
+
+<!-- Main Container -->
+<div class="container">
+
+    <h1>Moglix Trackers Dashboard</h1>
+
+    <div class="card">
+        <h2>Hyderabad(HYDS) Moglix Operations 2026</h2>
+        <button class="btn"
+        onclick="openLink('https://docs.google.com/spreadsheets/d/1EXdibIOuv_evcnTuDeJlLbnLoYR23MwMuyZ7rD_9_Aw/edit?usp=sharing')">
+        Visit
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>HYDS INBOND & OUTBOND March-26</h2>
+        <button class="btn"
+        onclick="openLink('https://moglix-my.sharepoint.com/')">
+        Visit
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>HYDS standard form</h2>
+        <button class="btn"
+        onclick="openLink('https://docs.google.com/spreadsheets/d/1-vJDPPBjiiChAK-sWkhBJjUjlk1dr-nIXpJeXh8mOVo/edit?usp=sharing')">
+        Visit
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>outbound.hyds@moglix.com</h2>
+        <button class="btn"
+        onclick="openLink('https://outlook.cloud.microsoft/mail/')">
+        Visit
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>inbound.hyds@moglix.com</h2>
+        <button class="btn"
+        onclick="openLink('https://outlook.cloud.microsoft/mail/')">
+        Visit
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>Log_10 Valmo</h2>
+        <button class="btn"
+        onclick="openLink('https://console.valmo.in/operations/login')">
+        Visit
+        </button>
+    </div>
+
+    <div class="card">
+        <h2>Telegram Web</h2>
+        <button class="btn"
+        onclick="openLink('https://web.telegram.org/')">
+        Visit
+        </button>
+    </div>
+
+</div>
+
+<script>
+
+/* Digital Clock */
+function updateDateTime(){
+
+    const now = new Date();
+
+    const time = now.toLocaleTimeString('en-IN',{
+        hour:'2-digit',
+        minute:'2-digit',
+        second:'2-digit',
+        hour12:true
+    });
+
+    const date = now.toLocaleDateString('en-IN',{
+        weekday:'long',
+        year:'numeric',
+        month:'long',
+        day:'numeric'
+    });
+
+    document.getElementById("digital-clock").innerText = time;
+    document.getElementById("digital-date").innerText = date;
+}
+
+setInterval(updateDateTime,1000);
+updateDateTime();
+
+/* Open Links */
+function openLink(url){
+    window.open(url,"_blank");
+}
+
+/* Disable Keyboard Shortcuts */
+document.addEventListener("keydown",function(e){
+
+    if(
+        e.ctrlKey &&
+        (
+            e.key === 'c' ||
+            e.key === 'u' ||
+            e.key === 's'
+        )
+    ){
+        e.preventDefault();
+    }
+
+});
+
+/* Mouse Sprinkle Animation */
+document.addEventListener("mousemove",function(e){
+
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+
+    sparkle.style.left = e.clientX + "px";
+    sparkle.style.top = e.clientY + "px";
+
+    const size = Math.random() * 10 + 5;
+
+    sparkle.style.width = size + "px";
+    sparkle.style.height = size + "px";
+
+    const colors = [
+        "#00ffff",
+        "#ff00ff",
+        "#00ff99",
+        "#ffffff",
+        "#4facfe",
+        "#00e1ff"
+    ];
+
+    const color =
+    colors[Math.floor(Math.random() * colors.length)];
+
+    sparkle.style.background =
+    `radial-gradient(circle, ${color}, transparent)`;
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(()=>{
+        sparkle.remove();
+    },800);
+
+});
+
+</script>
+
+</body>
+</html>
