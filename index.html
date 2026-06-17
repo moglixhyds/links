@@ -533,6 +533,20 @@ h1{
     }
 
 }
+	body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    user-select:none;
+
+    /* ✅ FALLBACK IMAGE */
+    background: url("background.jpg") no-repeat center center/cover;
+
+    background-color:black;
+    perspective:1400px;
+}
 
 </style>
 </head>
@@ -791,6 +805,15 @@ function(e){
         sparkle.remove();
     },800);
 
+});
+	const video = document.getElementById("bg-video");
+
+video.addEventListener("error", () => {
+    video.style.display = "none";
+});
+
+video.addEventListener("stalled", () => {
+    video.style.display = "none";
 });
 
 </script>
