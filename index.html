@@ -806,15 +806,30 @@ function(e){
     },800);
 
 });
-	const video = document.getElementById("bg-video");
+/* ========================= */
+/* IMAGE PRIORITY SYSTEM */
+/* ========================= */
 
-video.addEventListener("error", () => {
-    video.style.display = "none";
-});
+const video = document.getElementById("bg-video");
 
-video.addEventListener("stalled", () => {
-    video.style.display = "none";
-});
+// Check if image exists
+const img = new Image();
+img.src = "background.jpg";
+
+img.onload = function () {
+    // ✅ Image exists → disable video
+    if(video){
+        video.pause();
+        video.style.display = "none";
+    }
+};
+
+img.onerror = function () {
+    // ❌ Image not found → keep video
+    if(video){
+        video.style.display = "block";
+    }
+};
 
 </script>
 
